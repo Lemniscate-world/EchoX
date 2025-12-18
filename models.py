@@ -21,5 +21,7 @@ class MemoryItem:
     confidence: float = 0.5
     repetitions: int = 0
 
+    centrality: float = 0.0
+
     last_review: date | None = None
     next_review: date | None = None

@@ -1,7 +1,7 @@
 import sqlite3
 
 
-def connect(db_path="saturn.db"):
+def connect(db_path="echo.db"):
     return sqlite3.connect(db_path)
 
 
@@ -40,5 +40,11 @@ def init_db(conn):
         FOREIGN KEY (memory_id) REFERENCES memory_items(id)
     )
     """)
+
+    # Add centrality column if not exists (for migration)
+    try:
+        cur.execute("ALTER TABLE memory_items ADD COLUMN centrality REAL DEFAULT 0.0")
+    except sqlite3.OperationalError:
+        pass  # Column already exists
 
     conn.commit()

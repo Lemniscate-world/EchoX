@@ -3,7 +3,7 @@ from models import MemoryItem, Feedback
 from engine import review
 
 
-def test_saturn_30_days_simulation():
+def test_echo_30_days_simulation():
     today = date(2025, 1, 1)
 
     item = MemoryItem(
